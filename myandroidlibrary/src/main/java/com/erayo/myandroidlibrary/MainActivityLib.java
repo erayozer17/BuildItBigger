@@ -19,7 +19,8 @@ public class MainActivityLib extends AppCompatActivity {
         String joke;
 
         if (getIntent() != null) {
-            joke = getIntent().getExtras().getString(GET_SET_JOKE);
+            String joke2 = getIntent().getExtras().getString(GET_SET_JOKE);
+            joke = joke2 != null ? joke2 : "Joke Is Null";
         } else {
             joke = "Joke is not available";
         }

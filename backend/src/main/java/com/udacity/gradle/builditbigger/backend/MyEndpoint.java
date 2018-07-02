@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger.backend;
 
+import com.erayo.myjoketellingjavalib.MyClass;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -18,12 +19,22 @@ import javax.inject.Named;
 )
 public class MyEndpoint {
 
+    private static final int SECOND = 1000;
+
     /** A simple endpoint method that takes a name and says Hi back */
     @ApiMethod(name = "sayHi")
     public MyBean sayHi(@Named("name") String name) {
         MyBean response = new MyBean();
         response.setData("Hi, " + name);
 
+        return response;
+    }
+
+    @ApiMethod(name = "getJoke")
+    public MyBean getJoke(){
+        MyBean response = new MyBean();
+        MyClass c = new MyClass();
+        response.setData(c.getJoke());
         return response;
     }
 
